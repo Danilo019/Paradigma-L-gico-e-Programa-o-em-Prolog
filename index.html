@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="img/swipl-48x48.ico">
+    <title>Prolog</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid topbar bg-light px-5 d-none d-lg-block"></div>
+    <!-- Topbar End -->
+    <!-- Navbar teste-->
+
+    <!-- Navbar Teste fim -->
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0"> </a>
+            <h1 class="text-primary1">Prolog</h1>
+            <img src="img/swipl-48x48.ico" class="imgprolog" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Principal</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                            <span class="dropdown-toggle">Pesquisas</span>
+                        </a>
+                        <div class="dropdown-menu m-0">
+                            <a href="HistoriaEvolução.html" class="dropdown-item">Introdução Paragima Lógico e Prolog
+                            </a>
+                            <a href="ConceitosFundamentaisdoProlog.html" class="dropdown-item">Prolog na Aplicação Prática</a>
+                            <a href="CaracterísticaseVantagensdoProlog.html" class="dropdown-item">Características e
+                                Vantagens do Prolog</a>
+                            <a href="DesvantagenseLimitações.html" class="dropdown-item">Desvantagens e Limitações</a>
+                        </div>
+                    </div>
+                    <a href="Sobre.html" class="nav-item nav-link">Sobre</a>
+                    <a href="referencias.html" class="nav-item nav-link">Referências</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Carousel Start -->
+        <div class="header-carousel owl-carousel">
+            <div class="header-carousel-item">
+                <img src="img/carousel-1.jpg" class="img-fluid w-100" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row gy-0 gx-5">
+                            <div class="col-lg-0 col-xl-5"></div>
+                            <div class="col-xl-7 animated fadeInLeft">
+                                <div class="text-sm-center text-md-end">
+                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Paradigma lógico - Grupo verde
+                                    </h4>
+                                    <h1 class="display-4 text-uppercase text-white mb-4"> O que é um paradigma de
+                                        programação?</h1>
+                                    <p class="mb-5 fs-5">Um paradigma de programação é um estilo ou abordagem para
+                                        resolver problemas e estruturar programas através de técnicas e conceitos
+                                        específicos....
+                                    </p>
+                                    <div
+                                        class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                                        <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2"
+                                            href="https://www.youtube.com/watch?v=UubmwhIbHUY"><i
+                                                class="fas fa-play-circle me-2"></i> assista ao vídeo </a>
+                                        <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Saber
+                                            mais</a>
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center justify-content-center justify-content-md-end">
+                                        <h2 class="text-white me-2"> Siga:</h2>
+                                        <div class="d-flex justify-content-end ms-2">
+                                            <a class="btn btn-md-square btn-light rounded-circle me-2" href="https://github.com/Danilo019/Paradigma-L-gico-e-Programa-o-em-Prolog"><i
+                                                    class="fab fa-github"></i></a>
+                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href="https://pt.wikipedia.org/wiki/Prolog#:~:text=O%20Prolog%20%C3%A9%20uma%20linguagem,problema%20que%20se%20pretende%20computar."><i
+                                                    class="fab fa-google"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-carousel-item">
+                <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row g-5">
+                            <div class="col-12 animated fadeInUp">
+                                <div class="text-center">
+                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Paradigma lógico - Grupo verde
+                                    </h4>
+                                    <h1 class="display-4 text-uppercase text-white mb-4">Prolog hoje: usos modernos e
+                                        desafios.</h1>
+                                    <p class="mb-5 fs-5">Prolog ainda é amplamente usado em áreas como inteligência
+                                        artificial, processamento de linguagem natural e sistemas especialistas, graças
+                                        à sua capacidade de resolver problemas complexos com base em raciocínio
+                                        lógico....
+                                    </p>
+                                    <div class="d-flex justify-content-center flex-shrink-0 mb-4">
+                                        <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
+                                                class="fas fa-play-circle me-2"></i> assista ao vídeo </a>
+                                        <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Saber
+                                            mais</a>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <h2 class="text-white me-2">Siga:</h2>
+                                        <div class="d-flex justify-content-end ms-2">
+                                            <a class="btn btn-md-square btn-light rounded-circle me-2" href="https://github.com/Danilo019/Paradigma-L-gico-e-Programa-o-em-Prolog"><i
+                                                    class="fab fa-github"></i></a>
+                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href="https://pt.wikipedia.org/wiki/Prolog#:~:text=O%20Prolog%20%C3%A9%20uma%20linguagem,problema%20que%20se%20pretende%20computar."><i
+                                                    class="fab fa-google"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+
+    <!-- Abvout Start -->
+    <div class="container-fluid about py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+                    <div>
+                        <h4 class="text-primary">Sobre Prólog</h4>
+                        <h4 class="display-5 mb-2">O termo Prolog é derivado da expressão "Programming in Logic", uma
+                            vez que é baseado em Lógica de Predicados de ordem.
+                            O Prolog é uma linguagem de programação prática e eficiente, introduzida</h4>
+                        <p class="mb-4">Linguagem Declarativa:é um paradigma de programação que se baseia na descrição
+                            dos resultados desejados, em vez de detalhar as etapas para alcançá-los.
+                        </p>
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <div class="d-flex">
+                                    <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                    <div class="ms-4">
+                                        <h4>Comunidade Prolog</h4>
+                                        <p>O Reddit para Desenvolvedores e Profissionais de TI</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="https://www.reddit.com/r/brdev/comments/1cbmjsc/prolog/"
+                                    class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Descubra
+                                    Comunidade.</a>
+                            </div>
+                            <div class="col-sm-6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="bg-primary rounded position-relative overflow-hidden">
+                        <img src="img/about-2.png" class="img-fluid rounded w-100" alt="">
+
+                        <div class="" style="position: absolute; top: -15px; right: -15px;">
+                            <img src="img/swipl-48x48.ico" class="img-fluid"
+                                style="width: 100px; height: 100px; opacity: 0.8;" alt="">
+                        </div>
+                        <div class="rounded-bottom">
+                            <img src="img/about-5.jpg" class="img-fluid rounded-bottom w-100" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Features Start -->
+    <div class="container-fluid feature pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-primary">A Ausência de uma Logo Oficial para o Prolog</h4>
+                <h1 class="display-5 mb-4">A história por trás do logo do Prolog é um tanto quanto... inexistente!</h1>
+                <p class="mb-0">Diferente de muitas outras linguagens de programação que possuem logos icônicos e
+                    facilmente reconhecíveis,
+                    o Prolog não possui um logotipo oficial e universalmente adotado. A razão para isso é bastante
+                    simples:
+                </p>
+                <p class="custom-paragraph">
+                    <strong>Natureza Acadêmica:</strong> O Prolog surgiu em um ambiente acadêmico e, por muito tempo,
+                    foi utilizado principalmente em universidades e centros de pesquisa. A criação de um logotipo formal
+                    não era uma prioridade.
+                </p>
+
+                <p class="custom-paragraph">
+                    <strong>Diversidade de Implementações:</strong> Existem diversas implementações do Prolog, cada uma
+                    com suas próprias características e comunidades de usuários. Isso dificulta a criação de um logo que
+                    represente todas elas.
+                </p>
+
+                <p class="custom-paragraph">
+                    <strong>Foco na Lógica:</strong> A essência do Prolog reside na lógica e na representação do
+                    conhecimento. Um logotipo, por mais criativo que seja, não seria capaz de capturar completamente
+                    essa essência.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="feature-item p-4">
+                        <div class="feature-icon p-4 mb-4">
+
+                            <!-- Features End -->
+
+                            <!-- FAQs Start -->
+                            <div class="container-fluid faq-section pb-5">
+                                <div class="container pb-5 overflow-hidden">
+                                    <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
+                                        style="max-width: 800px;">
+                                        <h4 class="text-primary">Perguntas Frequentes</h4>
+                                        <h1 class="display-5 mb-4">Perguntas Sobre Prolog e Paradigma Lógico </h1>
+                                        <p class="mb-0">Explorar o Prolog e o paradigma lógico envolve compreender como
+                                            esse
+                                            sistema de programação baseado em regras e lógica simbólica pode resolver
+                                            problemas complexos de forma eficiente.
+                                        </p>
+                                    </div>
+                                    <div class="row g-5 align-items-center">
+                                        <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
+                                            <div class="accordion accordion-flush bg-light rounded p-5"
+                                                id="accordionFlushSection">
+                                                <div class="accordion-item rounded-top">
+                                                    <h2 class="accordion-header" id="flush-headingOne">
+                                                        <button class="accordion-button collapsed rounded-top"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                                            aria-controls="flush-collapseOne">
+                                                            Para que é usado Prolog?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                                        aria-labelledby="flush-headingOne"
+                                                        data-bs-parent="#accordionFlushSection">
+                                                        <div class="accordion-body">O Prolog é uma linguagem diferente,
+                                                            mas de uma simplicidade marcante. plataformas, tanto na
+                                                            forma de compiladores como de interpretadores. Propósito da
+                                                            criação:
+                                                            <code>criar programas para tradução de linguagem natural</code>
+                                                            (= linguagens faladas, como português, inglês).
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                                            aria-controls="flush-collapseTwo">
+                                                            Quais são os elementos de um programa em Prolog?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                                        aria-labelledby="flush-headingTwo"
+                                                        data-bs-parent="#accordionFlushSection">
+                                                        <div class="accordion-body">Os elementos básicos da linguagem
+                                                            Prolog são herdados da lógica de predi- cados. Esses
+                                                            elementos são <code>fatos, regras e consultas.</code></div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="flush-headingThree">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                                            aria-controls="flush-collapseThree">
+                                                            Como rodar um programa em Prolog?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                                        aria-labelledby="flush-headingThree"
+                                                        data-bs-parent="#accordionFlushSection">
+                                                        <div class="accordion-body">Um programa em Prolog pode rodar em
+                                                            um modo interativo,
+                                                            <code>o usuário poderá formular queries utilizando os fatos e as regras para produzir a solução através do mecanismo de unificação.</code>
+                                                            Os tipos de dados comumente existentes em outras linguagens,
+                                                            não são em empregados ao Prolog.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="flush-headingFour">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                                            aria-controls="flush-collapseFour">
+                                                            Como funciona o paradigma lógico?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                                        aria-labelledby="flush-headingFour"
+                                                        data-bs-parent="#accordionFlushSection">
+                                                        <div class="accordion-body">Paradigma Lógico:
+                                                            <code>Baseado em lógica formal, onde o programador define regras e fatos, e o computador deduz novas informações.</code>
+                                                            Exemplo: Prolog. Paradigma de Programação Concorrente:
+                                                            Enfatiza a execução simultânea de várias partes de um
+                                                            programa para melhorar a eficiência.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="flush-headingFive">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                                            aria-controls="flush-collapseFive">
+                                                            Quais são os tipos de paradigmas?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                                        aria-labelledby="flush-headingFive"
+                                                        data-bs-parent="#accordionFlushSection">
+                                                        <div class="accordion-body">Os principais tipos de paradigmas
+                                                            são:
+                                                            <code>imperativo, declarativo, funcional, lógico, orientado a objetos e orientado a eventos.</code>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item rounded-bottom">
+                                                    <h2 class="accordion-header" id="flush-headingSix">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseSix" aria-expanded="false"
+                                                            aria-controls="flush-collapseSix">
+                                                            O que significa paradigma em programação?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                                        aria-labelledby="flush-headingSix"
+                                                        data-bs-parent="#accordionFlushSection">
+                                                        <div class="accordion-body">Paradigma de programação
+                                                            <code>é um meio de se classificar as linguagens de programação baseado em suas funcionalidades.</code>As
+                                                            linguagens podem ser classificadas em vários paradigmas. Um
+                                                            paradigma de programação fornece e determina a visão que o
+                                                            programador possui sobre a estruturação e execução do
+                                                            programa.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s">
+                                            <div class="bg-primary rounded">
+                                                <img src="img/about-2.png" class="img-fluid w-100" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FAQs End -->
+
+                            <!-- Team Start -->
+                            <div class="container-fluid team pb-5">
+                                <div class="container pb-5">
+                                    <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
+                                        style="max-width: 800px;">
+                                        <h4 class="text-primary">Grupo Verde</h4>
+                                        <h1 class="display-5 mb-4">Contribuidores</h1>
+                                        <p class="mb-0">Agradecemos aos desenvolvedores por sua dedicação e trabalho
+                                            árduo na criação deste projeto. Seu esforço é fundamental para tornar essa
+                                            ferramenta uma realidade!
+                                        </p>
+                                    </div>
+                                    <div class="row g-4">
+                                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="team-item">
+                                                <div class="team-img">
+                                                    <img src="img/team-1.jpg" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="team-title">
+                                                    <h4 class="mb-0">Danilo Teodoro</h4>
+                                                    <p class="mb-0">RGM: 28641205</p>
+                                                </div>
+                                                <div class="team-icon">
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href="https://github.com/Danilo019"><i
+                                                            class="fab fa-github"></i></a>
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href="https://www.linkedin.com/in/danilo-t-4b86a2136/"><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="team-item">
+                                                <div class="team-img">
+                                                    <img src="img/team-5.jpg" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="team-title">
+                                                    <h4 class="mb-0">José Maria da Silva</h4>
+                                                    <p class="mb-0">RGM:29459141 </p>
+                                                </div>
+                                                <div class="team-icon">
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href="https://github.com/Danilo019"><i
+                                                            class="fab fa-github"></i></a>
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href="https://www.linkedin.com/in/danilo-t-4b86a2136/"><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+                                            <div class="team-item">
+                                                <div class="team-img">
+                                                    <img src="img/team-2.jpg" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="team-title">
+                                                    <h4 class="mb-0">João Lucas</h4>
+                                                    <p class="mb-0">RGM: 29842727</p>
+                                                </div>
+                                                <div class="team-icon">
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-github"></i></a>
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+                                            <div class="team-item">
+                                                <div class="team-img">
+                                                    <img src="img/team-3.jpg" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="team-title">
+                                                    <h4 class="mb-0">Matheus Henrique</h4>
+                                                    <p class="mb-0">RGM:30228981</p>
+                                                </div>
+                                                <div class="team-icon">
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-github"></i></a>
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                                            <div class="team-item">
+                                                <div class="team-img">
+                                                    <img src="img/team-4.jpg" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="team-title">
+                                                    <h4 class="mb-0">Natan Cesário </h4>
+                                                    <p class="mb-0">RGM:29677491</p>
+                                                </div>
+                                                <div class="team-icon">
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-github"></i></a>
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                                            <div class="team-item">
+                                                <div class="team-img">
+                                                    <img src="img/team-6.jpg" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="team-title">
+                                                    <h4 class="mb-0">Leonador Teodoro</h4>
+                                                    <p class="mb-0">RGM:</p>
+                                                </div>
+                                                <div class="team-icon">
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-github"></i></a>
+                                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                                        href=""><i class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Team End -->
+
+                            <!-- Testimonial Start -->
+                            <div class="container-fluid testimonial pb-5">
+                                <div class="container pb-5">
+                                    <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
+                                        style="max-width: 500px;">
+                                        <h4 class="text-primary"> +Prolog / SWI Prolog </h4>
+                                        <p class="mb-0">SWI-Prolog é uma implementação abrangente de código aberto do
+                                            Prolog 9linguagem de programação.</p>
+                                    </div>
+                                    <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.8s">
+                                        <div class="testimonial-item">
+                                            <div class="testimonial-quote-left">
+                                                <i class="fas fa-quote-left"></i>
+                                            </div>
+                                            <div class="testimonial-img">
+                                                <img src="img/about-2.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="testimonial-text">
+                                                <p class="mb-0">"Prolog (Programming in Logic) é uma linguagem de 
+                                                    programação usada amplamente em inteligência artificial (IA) 
+                                                    devido à sua capacidade de manipular lógica simbólica e realizar 
+                                                    inferências automáticas. Como uma linguagem baseada em lógica, 
+                                                    Prolog se destaca na resolução de problemas que envolvem 
+                                                    raciocínio lógico, como sistemas especialistas, processamento de 
+                                                    linguagem natural, planejamento e busca de caminhos.</p>
+                                            </div>
+                                            <div class="testimonial-title">
+                                            </div>
+                                            <div class="testimonial-quote-right">
+                                                <i class="fas fa-quote-right"></i>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-item">
+                                            <div class="testimonial-quote-left">
+                                                <i class="fas fa-quote-left"></i>
+                                            </div>
+                                            <div class="testimonial-img">
+                                                <img src="img/swipl-48x48.ico" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="testimonial-text">
+                                                <p class="mb-auto">"Um exemplo de um primeiro programa em Prolog é o 
+                                                    Exercício 1 do livro de Clocksin e Mellish (1984). 
+                                                    O programa possui as três partes básicas: Domains, Predicates e 
+                                                    Clauses. "</p>
+                                            </div>
+                                            <div class="testimonial-title">
+                                                <div class="d-flex text-primary">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-quote-right">
+                                                <i class="fas fa-quote-right"></i>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-item">
+                                            <div class="testimonial-quote-left">
+                                            </div>
+                                            <div class="testimonial-img">
+                                                <img src="img/carousel-2.jpg" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="testimonial-text">
+                                                <p class="mb-0">"Voce Sabia Prolog é uma linguagem de programação declarativa que se baseia na Lógica de Predicados de 1ª ordem. O nome Prolog é uma derivação da expressão "Programming in Logic". 
+                                                    O Prolog foi criado em 1973 na Universidade de Marseille, na França. "</p>
+                                            </div>
+                                            <div class="testimonial-title">
+                                                <div></div>
+                                                <div class="d-flex text-primary">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-quote-right">                                            </div>
+                                        </div>
+                                        <div class="testimonial-item">
+                                            <div class="testimonial-quote-left">
+                                            </div>
+                                            <div class="testimonial-img">
+                                                <img src="img/carousel-1.jpg" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="testimonial-text">
+                                                <p class="mb-3">
+                                                    <h5>Algumas aplicações do Prolog são:</h5>
+                                                    <li>Lógica matemática</li>
+                                                    <li>Prova automática de teoremas
+                                                    <li>Solução de equações simbólicas</li>
+                                                    <li>Bancos de dados relacionais</li>
+                                                    <li>Linguagem Natural</li>
+                                                    <li>Sistemas Especialistas</li>
+                                                    <li>Compiladores</li>
+                                                </p>
+                                            </div>
+                                            <div class="testimonial-title">
+                                                <div></div>
+                                                <div class="d-flex text-primary">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-carousel">
+                                                <i class="fas fa-quote-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Testimonial End -->
+
+
+                            <!-- Inicio Rodapé -->
+                            <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+                                <div class="container py-5 border-start-0 border-end-0"
+                                    style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+                                    <div class="row g-5">
+                                        <div class="col-md-6 col-lg-6 col-xl-4">
+                                            <div class="footer-item">
+                                                <a href="index.html" class="p-0">
+                                                    <h1 class="display- mb-6">Prolog</h1>
+                                                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                                                </a>
+                                                <p class="mb-4">Prolog é uma linguagem poderosa para a resolução de
+                                                    problemas complexos, permitindo que você
+                                                    crie soluções
+                                                    inteligentes com lógica e precisão....</p>
+                                                <a class="playstore-button"
+                                                    href="https://play.google.com/store/apps/details?id=sfinks.mdev.prolog">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                        class="icon" viewBox="0 0 512 512">
+                                                        <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 
+                                                    8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 
+                                                    212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-
+                                                    25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-
+                                                    149.372-74.849-74.847z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="texts">
+                                                        <span class="text-1">Baixe App</span>
+                                                        <span class="text-2">Google Play</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-2">
+                                            <div class="footer-item">
+                                                <h4 class="text-white mb-4">Links rápidos</h4>
+                                                <a href="https://pt.wikipedia.org/wiki/Prolog"><i
+                                                        class="fas fa-angle-right me-2"></i> Sobre Prolog</a>
+                                                <a
+                                                    href="https://www2.unemat.br/rhycardo/download/apostila_de_prolog.pdf"></i>
+                                                    Recurso</a>
+                                                <a
+                                                    href="https://www.francogarcia.com/pt-br/blog/ambientes-de-desenvolvimento-prolog/"><i
+                                                        class="fas fa-angle-right me-2"></i> Blog</a>
+                                                <a href="https://www.swi-prolog.org/pldoc/index.html"><i
+                                                        class="fas fa-angle-right me-2"></i> Documentação
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-3">
+                                            <div class="footer-item">
+                                                <h4 class="text-white mb-4">Suporte</h4>
+                                                <a href="#"><i class="fas fa-angle-right me-2"></i> política de
+                                                    Privacidade</a>
+                                                <a href="#"><i class="fas fa-angle-right me-2"></i> Termos e
+                                                    Condições</a>
+                                                <a href="#"><i class="fas fa-angle-right me-2"></i> Isenção de
+                                                    responsabilidade</a>
+                                                <a href="#"><i class="fas fa-angle-right me-2"></i> Apoiar</a>
+                                                <a href="#"><i class="fas fa-angle-right me-2"></i> Perguntas
+                                                    frequentes</a>
+                                                <a href="#"><i class="fas fa-angle-right me-2"></i> Ajuda</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-3">
+                                            <div class="footer-item">
+                                                <h4 class="text-white mb-4">projeto no github</h4>
+                                                <a href="https://github.com/Danilo019/Paradigma-L-gico-e-Programa-o-em-Prolog"
+                                                    target="_blank">
+                                                    <button class="btn-github">
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M7.99992 1.33331C7.12444 1.33331 6.25753 1.50575 5.4487 1.84078C4.63986 2.17581 3.90493 2.66688 3.28587 3.28593C2.03563 4.53618 1.33325 6.23187 1.33325 7.99998C1.33325 10.9466 3.24659 13.4466 5.89325 14.3333C6.22659 14.3866 6.33325 14.18 6.33325 14C6.33325 13.8466 6.33325 13.4266 6.33325 12.8733C4.48659 13.2733 4.09325 11.98 4.09325 11.98C3.78659 11.2066 3.35325 11 3.35325 11C2.74659 10.5866 3.39992 10.6 3.39992 10.6C4.06659 10.6466 4.41992 11.2866 4.41992 11.2866C4.99992 12.3 5.97992 12 6.35992 11.84C6.41992 11.4066 6.59325 11.1133 6.77992 10.9466C5.29992 10.78 3.74659 10.2066 3.74659 7.66665C3.74659 6.92665 3.99992 6.33331 4.43325 5.85998C4.36659 5.69331 4.13325 4.99998 4.49992 4.09998C4.49992 4.09998 5.05992 3.91998 6.33325 4.77998C6.85992 4.63331 7.43325 4.55998 7.99992 4.55998C8.56659 4.55998 9.13992 4.63331 9.66659 4.77998C10.9399 3.91998 11.4999 4.09998 11.4999 4.09998C11.8666 4.99998 11.6333 5.69331 11.5666 5.85998C11.9999 6.33331 12.2533 6.92665 12.2533 7.66665C12.2533 10.2133 10.6933 10.7733 9.20659 10.94C9.44659 11.1466 9.66659 11.5533 9.66659 12.1733C9.66659 13.0666 9.66659 13.7866 9.66659 14C9.66659 14.18 9.77325 14.3933 10.1133 14.3333C12.7599 13.44 14.6666 10.9466 14.6666 7.99998C14.6666 7.1245 14.4941 6.25759 14.1591 5.44876C13.8241 4.63992 13.333 3.90499 12.714 3.28593C12.0949 2.66688 11.36 2.17581 10.5511 1.84078C9.7423 1.50575 8.8754 1.33331 7.99992 1.33331V1.33331Z"
+                                                                fill="currentcolor"></path>
+                                                        </svg>
+                                                        <span>Github</span>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Copyright Start -->
+                            <div class="container-fluid copyright py-4">
+                                <div class="container">
+                                    <div class="row g-4 align-items-center">
+                                        <div class="col-md-6 text-center text-md-start mb-md-0">
+                                            <div style="background:#111111; text-align: center; padding:5%;">
+                                                <p class="cp-text">
+                                                    © Copyright 2024 Grupo Verde. Todos os direitos reservados.
+                                                </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- Copyright End -->
+
+
+                            <!-- Back to Top -->
+                            <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i
+                                    class="fa fa-arrow-up"></i></a>
+
+
+                            <!-- JavaScript Libraries -->
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                            <script
+                                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                            <script src="lib/wow/wow.min.js"></script>
+                            <script src="lib/easing/easing.min.js"></script>
+                            <script src="lib/waypoints/waypoints.min.js"></script>
+                            <script src="lib/counterup/counterup.min.js"></script>
+                            <script src="lib/lightbox/js/lightbox.min.js"></script>
+                            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+                            <!-- Template Javascript -->
+                            <script src="js/main.js"></script>
+</body>
+
+</html>

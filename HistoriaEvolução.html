@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="Pt-Br">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="img/swipl-48x48.ico">
+  <title>História do Prolog</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="" name="keywords" />
+  <meta content="" name="description" />
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+  <script type="text/javascript">
+    window.tailwind.config = {
+      darkMode: ["class"],
+      theme: {
+        extend: {
+          colors: {
+            border: "hsl(var(--border))",
+            input: "hsl(var(--input))",
+            ring: "hsl(var(--ring))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            primary: {
+              DEFAULT: "hsl(var(--primary))",
+              foreground: "hsl(var(--primary-foreground))",
+            },
+            secondary: {
+              DEFAULT: "hsl(var(--secondary))",
+              foreground: "hsl(var(--secondary-foreground))",
+            },
+            destructive: {
+              DEFAULT: "hsl(var(--destructive))",
+              foreground: "hsl(var(--destructive-foreground))",
+            },
+            muted: {
+              DEFAULT: "hsl(var(--muted))",
+              foreground: "hsl(var(--muted-foreground))",
+            },
+            accent: {
+              DEFAULT: "hsl(var(--accent))",
+              foreground: "hsl(var(--accent-foreground))",
+            },
+            popover: {
+              DEFAULT: "hsl(var(--popover))",
+              foreground: "hsl(var(--popover-foreground))",
+            },
+            card: {
+              DEFAULT: "hsl(var(--card))",
+              foreground: "hsl(var(--card-foreground))",
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 240 10% 3.9%;
+          --card: 0 0% 100%;
+          --card-foreground: 240 10% 3.9%;
+          --popover: 0 0% 100%;
+          --popover-foreground: 240 10% 3.9%;
+          --primary: 240 5.9% 10%;
+          --primary-foreground: 0 0% 98%;
+          --secondary: 240 4.8% 95.9%;
+          --secondary-foreground: 240 5.9% 10%;
+          --muted: 240 4.8% 95.9%;
+          --muted-foreground: 240 3.8% 46.1%;
+          --accent: 240 4.8% 95.9%;
+          --accent-foreground: 240 5.9% 10%;
+          --destructive: 0 84.2% 60.2%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 5.9% 90%;
+          --input: 240 5.9% 90%;
+          --ring: 240 5.9% 10%;
+          --radius: 0.5rem;
+        }
+        .dark {
+          --background: 240 10% 3.9%;
+          --foreground: 0 0% 98%;
+          --card: 240 10% 3.9%;
+          --card-foreground: 0 0% 98%;
+          --popover: 240 10% 3.9%;
+          --popover-foreground: 0 0% 98%;
+          --primary: 0 0% 98%;
+          --primary-foreground: 240 5.9% 10%;
+          --secondary: 240 3.7% 15.9%;
+          --secondary-foreground: 0 0% 98%;
+          --muted: 240 3.7% 15.9%;
+          --muted-foreground: 240 5% 64.9%;
+          --accent: 240 3.7% 15.9%;
+          --accent-foreground: 0 0% 98%;
+          --destructive: 0 62.8% 30.6%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 3.7% 15.9%;
+          --input: 240 3.7% 15.9%;
+          --ring: 240 4.9% 83.9%;
+        }
+      }
+    </style>
+</head>
+
+<body>
+  <!-- Início giratório-->
+  <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <!-- Fim giratório -->
+
+  <!-- Barra de navegação e início do site -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+      <a href="" class="navbar-brand p-0"> </a>
+      <h1 class="text-primary1">Prolog</h1>
+      <img src="img/swipl-48x48.ico" class="imgprolog" />
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <a href="index.html" class="nav-item nav-link active">Principal</a>
+          <a href="Sobre.html" class="nav-item nav-link">Sobre</a>
+          <a href="referencias.html" class="nav-item nav-link">Referências</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link" data-bs-toggle="dropdown">
+              <span class="dropdown-toggle"></span>
+            </a>
+
+          </div>
+          <a href="contact.html" class="nav-item nav-link">Aprender</a>
+        </div>
+        <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Quiz</a>
+      </div>
+    </nav>
+  </div>
+  <!-- Início do cabeçalho -->
+  <div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px">
+      <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">
+        Paradigma Lógico/Historia e evoluçao do Prolog
+      </h4>
+      <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+        <li class="breadcrumb-item"><a href="index.html">Principal</a></li>
+        <li class="breadcrumb-item"><a href="ConceitosFundamentaisdoProlog.html">Prolog na Aplicação Prática</a></li>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <!-- Fim do cabeçalho-->
+
+  <!-- Barra de navegação e fim do site -->
+  <!-- Inicio pesquisa -->
+  <div class="max-w-2xl mx-auto p-4 bg-white dark:bg-card text-zinc-800 dark:text-card-foreground rounded-lg shadow-md">
+    <img src="img/História-da-Tecnologia-Educacional.jpg" alt="hands typing on a laptop"
+      class="w-full h-48 object-cover rounded-t-lg">
+    <h2 class="text-2xl font-bold mt-4 text-green-600">Paradigma lógico</h2>
+    <p class="mt-2 text-zinc-700 dark:text-muted-foreground">
+      Além do paradigma imperativo e declarativo, também há o paradigma lógico, um paradigma de programação que usa a
+      lógica
+      matemática para resolver problemas. Em vez de focar em sequências de comandos ou funções, como em outros
+      paradigmas, o paradigma
+      lógico utiliza regras lógicas para definir as relações entre os elementos do problema. Isso significa que o
+      programador
+      especifica as condições e relações que devem ser verdadeiras para obter o resultado desejado, e o sistema deduz a
+      solução
+      com base nessas regras. Prolog é uma das linguagens de programação que segue esse paradigma, e é amplamente usada
+      em áreas
+      como inteligência artificial e processamento de linguagem natural.
+    </p>
+    <h2 class="text-2xl font-bold mt-4 text-green-600">História do Prolog</h2>
+    <p class="mt-2 text-zinc-700 dark:text-muted-foreground">
+      O nome Prolog foi escolhido por Philippe Roussel, por sugestão de sua esposa, como uma abreviação de
+      programmation en logique ( francês para programação em lógica ). [ 76 ] Foi criado por volta de 1972 por
+      Alain Colmerauer com Philippe Roussel, com base na interpretação procedural de cláusulas de Horn de Robert
+      Kowalski . Foi motivado em parte pelo desejo de reconciliar o uso da lógica como uma linguagem de representação
+      de conhecimento declarativa com a representação procedural do conhecimento que era popular na América do Norte
+      no final dos anos 1960 e início dos anos 1970. De acordo com Robert Kowalski , o primeiro sistema Prolog foi
+      desenvolvido em 1972 por Colmerauer e Phillipe Roussel. [ 77 ] [ 78 ] [ 79 ] A primeira implementação do Prolog
+      foi um interpretador escrito em Fortran por Gerard Battani e Henri Meloni. David HD Warren levou esse
+      interpretador para a Universidade de Edimburgo , e lá implementou um front-end alternativo, que veio a
+      definir a sintaxe "Edinburgh Prolog" usada pela maioria das implementações modernas. Warren também implementou o
+      primeiro compilador para Prolog, criando o influente DEC-10 Prolog em colaboração com Fernando Pereira. Warren
+      mais tarde generalizou as ideias por trás do DEC-10 Prologo, para criar a Warren Abstract Machine .
+    </p>
+    <br>
+    <figure class="timeline">
+      <a href="img/Early_Prolog_timeline.svg">
+        <img
+          src="//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Early_Prolog_timeline.svg/440px-Early_Prolog_timeline.svg.png"
+          decoding="async" width="600" height="200" class="timeline-image"
+          srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Early_Prolog_timeline.svg/660px-Early_Prolog_timeline.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/49/Early_Prolog_timeline.svg/880px-Early_Prolog_timeline.svg.png 2x"
+          data-file-width="600" data-file-height="240" alt="Linha do tempo dos primeiros desenvolvimentos no Prolog">
+      </a>
+      <figcaption class="timeline-caption">
+        Linha do tempo dos primeiros desenvolvimentos no Prolog
+      </figcaption>
+    </figure>
+    <p><b>PLN</b>de linguagem natural (PLN) é uma vertente da inteligência artificial que ajuda computadores a entender,
+      interpretar e manipular a linguagem humana. O PLN resulta de diversas disciplinas, incluindo ciência da computação
+      e linguística
+      computacional, que buscam preencher a lacuna entre a comunicação humana e o entendimento dos computadores.</p>
+    <br>
+    <div>
+      <h2 class="text-2xl font-bold mt-4 text-green-600">Aplicações Do Prolog</h2>
+      <p class="mt-2 text-zinc-700 dark:text-muted-foreground">
+        As principais aplicações do Prolog se dão na área de computação simbólica:
+        Em resumo Sistemas de Computação Simbólica são softwares matemáticos que permitem lidar com símbolos e obter
+        respostas exatas
+        para muitos problemas matemáticos, como a fatoração de números inteiros e polinômios, operações com matrizes,
+        resolução de sistemas
+        lineares e não lineares de equações, operações com números complexos, simplificações de expressões, cálculo de
+        limites, derivadas e
+        integrais, resolução de equações diferenciais e etc.
+        <li>lógica matemática, prova automática de teoremas e semântica</li>
+        <li>Solução de equações simbólicas;</li>
+        <li>Bancos de dados relacionais;</li>
+        <li>Linguagem Natural;</li>
+        <li>Sistemas Especialistas;</li>
+        <li>Planejamento Automático de Atividades;</li>
+        <li>Análise Bioquímica e projetos de novas drogas.</li>
+        <li>Aplicações de “General Problem Solving”, em jogos como (Xadrez, Damas, Jogo da Velha, etc.);</li>
+        <br>
+      <p>O General Problem Solver (GPS), ou Solucionador de problemas gerais, foi um programa de computador criado em
+        1957
+        por Herbert Alexander Simon, J. C. Shaw e Allen Newell destinado a funcionar como uma máquina universal de
+        solucionar
+        problemas. Qualquer problema simbólico formalizado poderia ser resolvido, em princípio, pelo GPS. Por exemplo:
+        provas de
+        teoremas, problemas em geometria e o jogo de xadrez.</p>
+      </p>
+    </div>
+    <br>
+    <h2 class="text-2xl font-bold mt-4 text-green-600">Implementação em hardware</h2>
+    <p>
+      Durante o <a href="https://en.wikipedia.org/wiki/Fifth_Generation_Computer_Systems_project"
+        title="projeto de Sistemas de Computadores de Quinta Geração"><i class="text-link">projeto de Sistemas de
+          Computadores de Quinta Geração</i></a>
+      houve tentativas de implementar o Prolog em hardware com o objetivo de obter uma execução mais rápida com
+      arquiteturas dedicadas.
+      Além disso, o Prolog tem uma série de propriedades que podem permitir aceleração por meio da
+      execução paralela Uma abordagem mais recente foi compilar programas Prolog
+      restritos em <a href="https://en.wikipedia.org/wiki/Field_programmable_gate_array"
+        title="Conjunto Programavel"><i>um conjunto de portas programáveis em campo</i></a>
+      No entanto, o rápido progresso em hardware de uso geral tem ultrapassado consistentemente arquiteturas mais
+      especializadas.
+    </p>
+    <br>
+    <p><a class="link" href="/wiki/Sega" title="Sega">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">A Sega</font>
+        </font>
+      </a>
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;"> implementou o Prolog para uso com o Sega AI Computer, lançado para o
+          mercado japonês em 1986. O Prolog foi usado para ler entradas </font>
+      </font>
+      '<a class="link" href="/wiki/Natural_language" title="Linguagem natural">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">de linguagem natural</font>
+        </font>
+        </a'>
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;"> , no </font>
+        </font><a href="/wiki/Japanese_language" title="Língua japonesa">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">idioma japonês</font>
+          </font>
+        </a>
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;"> , por meio de um </font>
+        </font><a href="/wiki/Touch_pad" class="mw-redirect" title="Painel de toque">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">touchpad</font>
+          </font>
+        </a>
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;"> . </font>
+        </font><sup id="cite_ref-51" class="reference"><a href="#cite_note-51"><span class="cite-bracket">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">[</font>
+              </font>
+            </span>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;"> 50 </font>
+            </font><span class="cite-bracket">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">]</font>
+              </font>
+            </span>
+          </a></sup>
+    </p>
+    <h2 class="text-2xl font-bold mt-4 text-green-600">Tipos de Dados</h2>
+    <p>
+      <a class="link" https://en.wikipedia.org/wiki/Data_type">O uníco tipo de dado</a>
+      do Prolog é o <i class="text-link"> "termo" </i> são <a class="link"
+        https://en.wikipedia.org/wiki/Symbol_(programming)#Prolog">átomos</a>
+      números,variáveis ou termos compostos
+      <li>Um<b> átomo</b> é um nome de símbolo que começa com uma letra minúscula ou é
+        guardado por aspas.Exemplos de átomos incluem x, red, 'Taco', 'some atom', e 'p(a)'.</li>
+      <li><b>Os números</b> podem ser floats ou inteiros . A maioria dos principais sistemas Prolog suporta
+        números inteiros de comprimento arbitrário.</li>
+      <li><b>Variáveis</b> são denotadas por uma sequência de caracteres consistindo de letras, números e caracteres
+        de sublinhado, e começando com uma letra maiúscula ou sublinhado. Variáveis se assemelham muito a
+        variáveis em lógica, pois são marcadores de posição para termos arbitrários.</li>
+      <li>Um termo <b>composto</b> é composto de um átomo chamado "functor" e um número de "argumentos",
+        que são novamente termos. Termos compostos são normalmente escritos como um functor seguido por uma
+        lista separada por vírgulas de termos de argumento, que está contida entre parênteses. O número de
+        argumentos é chamado de aridade do termo . Um átomo pode ser considerado um termo composto com aridade
+        zero. Um exemplo de um termo composto é person_friends(zelda,[tom,jim]).</li>
+    </p>
+    <br>
+    <h2 class="text-2xl font-bold mt-4 text-green-600">Prolog /O que é Prolog</h2>
+    <p class="mt-2 text-zinc-700 dark:text-muted-foreground">
+      Prolog é uma linguagem de programação declarativa . Isso significa que em Prolog, você não escreve
+      o que o computador deve fazer linha por linha, como em linguagens procedurais como C e Java.
+      A ideia geral por trás de linguagens declarativas é que você descreve uma situação.
+      Com base nesse código, o interpretador ou compilador lhe dirá uma solução. No caso de Prolog, ele lhe
+      dirá se uma sentença de Prolog é verdadeira ou não e, se contiver variáveis, quais devem ser os valores
+      das variáveis.
+    </p>
+    <p>
+      Isso pode soar como uma dádiva para programadores, mas a verdade é que o Prolog raramente é usado
+      puramente dessa forma. Embora a ideia declarativa seja a espinha dorsal do Prolog, é possível ver o
+      código Prolog como procedural. Um programador Prolog geralmente fará as duas coisas, dependendo da parte
+      do código que está lendo ou escrevendo. Ao aprender Prolog, no entanto, a experiência em programação
+      procedural não é de forma alguma útil. (costuma-se dizer que é mais fácil aprender Prolog para alguém
+      que não tem experiência em programação procedural do que para alguém que tem)
+      <a class="tex-tamplate-red" href="https://en.wikibooks.org/w/index.php?title=Template:Whom&action=edit&redlink=1"
+        title="Tamplate Whom">Template:Whom</a>
+    </p>
+    <h2 class="text-2xl font-bold mt-4 text-green-600">Como Prolog funciona?</h2>
+    <p>
+      Um programa Prolog constitui-se de uma coleção de fatos (base de dados) e regras (relações lógicas),
+      esses ítens descrevem o domínio de um determinado problema. Esta descrição do problema é avaliada por um
+      interpretador, o qual utilizando um motor de inferência realiza deduções em busca de conclusões válidas para
+      consultas realizadas pelos usuários. Assim, pode-se armar que a computação destes programas é equivalente a
+      prova de um teorema em lógica.
+    </p>
+    <p>
+      Os fatos de Prolog permitem a de nição de predicados por meio da declaração de quais ítens pertencentes ao
+      universo (ou domínio) satisfazem os predicados. Por exemplo, pode-se de nir o predicado homem(x) e utilizar
+      este para de nir quais elementos do universo possuem tal predicado, no caso x é homem.
+    </p>
+    <li>homem(pedro).</li>
+    <li>homem(joao).</li>
+    <li>mulher(maria).</li>
+    <li>mulher(teresa).</li>
+    <p>
+      O usuário pode realizar a consulta <b>homem(X).</b> e receber as seguintes respostas X=pedro; X=joao;
+      No, signicando que pedro e joao são homens, o No indica que não existem mais respostas que satisfaçam a
+      consulta.
+    </p>
+    <p>
+      As computações em Prolog utilizam os conceitos de cláusulas de horn, resolução e encadeamento para trás
+      <a class="link"
+        href="https://www.google.com/search?q=backtracking&sourceid=chrome&ie=UTF-8#:~:text=Backtracking%20%C3%A9%20uma,para%20um%20...%20v%C3%A1lido."
+        title=" (backtracking),">(backtracking),</a> com estes é possível realizar a computação de maneira equivalente a
+      uma dedução em Lógica
+      de 1° ordem.
+    </p>
+    <br>
+    <h2 class="text-2xl font-bold mt-4 text-green-600">Implementações de Prolog</h2>
+    <p>
+      Diversas implementações da linguagem Prolog podem ser encontradas, o que para muitos constitui um problema,
+      pois estas nem sempre são totalmente compatíveis. Atualmente, existem versões livres e comerciais criadas
+      para os principais sistemas operacionais. Algumas das implementações mais conhecidas são:
+    </p>
+    <li><b>B-Prolog</b>
+      <br>
+      <a class="link" href="http://www.picat-lang.org/bprolog/">http://www.picat-lang.org/bprolog/</a>
+      <br>
+      Um compilador Prolog para Prolog padrão com recursos estendidos, como tabulação e resolução de restrições.
+      Suporta muitas plataformas.
+    </li>
+    <br>
+    <li><b>SWI Prolog (recomendado para uso com este livro)</b>
+      <br>
+      <a class="link" href="https://www.swi-prolog.org/">https://www.swi-prolog.org/</a>
+      <br>
+      Uma implementação pequena e robusta de código aberto que é compatível com ambos os padrões Prolog
+      (ISO e Edinburgh) e tem muitas bibliotecas extras e predicados integrados. Há até mesmo um kit de
+      ferramentas separado para criar janelas e gráficos, chamado XPCE. Suporta muitas plataformas.
+    </li>
+    <br>
+    <li><b>GNU Prolog</b>
+      <br>
+      <a class="link" href="http://www.gprolog.org/">http://www.gprolog.org/</a>
+      <br>
+      Uma implementação de código aberto relativamente nova. Tem suporte para Constraint Logic Programming, uma extensão
+      do prolog.
+    </li>
+    <br>
+    <li><b>Prólogo Visual</b>
+      <br>
+      <a class="link" href="http://www.visual-prolog.com/">http://www.visual-prolog.com/</a>
+      <br>
+      Um ambiente de desenvolvimento completo para uma extensão orientada a objetos do Prolog. Inclui compilador,
+      vinculador, editor de texto, editores de diálogo gráfico, sistema de construção, depurador, grande biblioteca e
+      muito mais
+    </li>
+    <br>
+    <p>As seguintes implementações não são gratuitas:</p>
+    <br>
+    <li><b>Prólogo SICSTUS</b>
+      <br>
+      <a class="link" href="http://www.sics.se/">http://www.sics.se/</a>
+      <br>
+      Provavelmente o mais conhecido conjunto de implementação e desenvolvimento profissional de prolog.
+      Compatível com ISO, muitas bibliotecas e suporte para programação de lógica de restrição. Gratuito para avaliação.
+    </li>
+    <br>
+    <li><b>Quintus Prólogo</b>
+      <br>
+      <a class="link" href="http://www.sics.se/quintus/">http://www.sics.se/quintus/</a>
+      <br>
+      Uma implementação especialmente robusta e confiável, destinada ao uso comercial e projetos de pesquisa pela mesma
+      empresa que faz o SICSTUS. Gratuito para avaliação.
+      A implementação utilizada ao longo dessa aprensatação é a SWI-Prolog, todo código utilizado nos exemplos e
+      exercícios apresentados aqui foram desenvolvidos nesta versão de Prolog.
+    </li>
+    <br>
+    <h2 class="text-2xl font-bold mt-4 text-green-600">Os comandos write e read</h2>
+    <p>
+      O comando <b>write</b> exibe o valor do parâmetro no dispositivo de saída corrente. O dispositivo padrão é o
+      monitor, assim, o comando write(`Teste de impressão.'). irá exibir a mensagem Teste de impressão. na tela do
+      monitor. O mesmo comando pode ser utilizado para imprimir o valor de qualquer variável. No entanto, não existe um
+      comando padrão Prolog para escrita de expressões formatadas. Devido a isso, o SWI-Prolog utiliza comandos de
+      extensão, um deste é o comando writef do C-Prolog de Edinburgo. Este comando possui a seguinte sintaxe
+      writef(Formato, Argumentos).
+    </p>
+    <br>
+    <p>
+      O comando <b>read</b> lê um valor no dispositivo de entrada corrente e uni ca (atribui) o valor uma variável. O
+      dispositivo de entrada padrão é o teclado, assim, o comando read(X). irá ler um valor do teclado e uni car este
+      valor com a variável X.
+    </p>
+    <br>
+    <h2 id="referências" style="cursor: auto;"
+      title="Esta seção foi configurada para não ser editável diretamente. Edite a página toda ou a seção anterior em disso.">
+      <h3><b> Referências </b></h3>
+    </h2>
+    <hr style="width: 100%; height: 3px; background-color: rgb(128, 128, 128);">
+    <div class="mw-references-wrap">
+      <ol class="references">
+        <li id="cite_note-1">
+          1.
+          <span class="mw-cite-backlink">
+            <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+          </span>
+          <span class="reference-text">
+            <cite class="citation web">
+              <a class="external text" rel="nofollow"
+                href="https://tripleten.com.br/blog/paradigmas-de-programacao-o-que-sao-e-quais-os-principais/">
+                << O que são paradigmas de programação e quais os principais tipos?>>
+              </a>
+            </cite>
+          </span>
+        </li>
+      </ol>
+    </div>
+    <div class="mw-references-wrap">
+      <ol class="references">
+        <li id="cite_note-1">
+          2.
+          <span class="mw-cite-backlink">
+            <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+          </span>
+          <span class="reference-text">
+            <cite class="citation web">
+              <a class="external text" rel="nofollow" href="https://pt.wikipedia.org/wiki/Prolog#">
+                << Prolog (Programação Lógica)>>
+              </a>
+            </cite>
+          </span>
+        </li>
+      </ol>
+    </div>
+    <div class="mw-references-wrap">
+      <ol class="references">
+        <li id="cite_note-1">
+          3.
+          <span class="mw-cite-backlink">
+            <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+          </span>
+          <span class="reference-text">
+            <cite class="citation web">
+              <a class="external text" rel="nofollow"
+                href="https://en.wikipedia.org/wiki/Prolog#:~:text=Implementa%C3%A7%C3%A3o%20em%20hardware,%5B%2050%20%5D">
+                << Implementação em hardware -Wikipidia>>
+              </a>
+            </cite>
+          </span>
+        </li>
+      </ol>
+    </div>
+    <br>
+    <h2 id="referências" style="cursor: auto;"
+      title="Esta seção foi configurada para não ser editável diretamente. Edite a página toda ou a seção anterior em disso.">
+      <b>Leitura Adicional</b>
+    </h2>
+    <hr style="width: 100%; height: 3px; background-color: rgb(128, 128, 128);">
+    <div class="mw-references-wrap">
+      <ol class="references">
+        <li id="cite_note-1">
+          1.
+          <span class="mw-cite-backlink">
+            <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+          </span>
+          <span class="reference-text">
+            <cite class="citation web">
+              <a class="external text" rel="nofollow"
+                href="https://web.archive.org/web/20070826231318/http:/www.learnprolognow.org/">
+                << Blackburn, Patrick; Bos, Johan; Striegnitz, Kristina (2006). Aprenda Prolog agora! . Publicações
+                  universitárias.ISBN 978-1-904987-17-8 Arquivado do original em 26/08/2007 . Recuperado em 02/12/2008
+                  .>>
+              </a>
+            </cite>
+          </span>
+        </li>
+      </ol>
+    </div>
+    <div class="mw-references-wrap">
+      <ol class="references">
+        <li id="cite_note-1">
+          2.
+          <span class="mw-cite-backlink">
+            <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+          </span>
+          <span class="reference-text">
+            <cite class="citation web">
+              <a class="external text" rel="nofollow" href="#">
+                << Robert Smith, John Gibson, Aaron Sloman : 'Suporte de máquina virtual de dois níveis do POPLOG 
+                para linguagens interativas' , em Research Directions in Cognitive Science Volume 5: Artificial
+                  Intelligence , Eds D. Sleeman e N. Bernsen, Lawrence Erlbaum Associates, pp 203–231, 1992.>>
+              </a>
+            </cite>
+          </span>
+        </li>
+      </ol>
+    </div>
+    <div class="mw-references-wrap">
+      <ol class="references">
+        <li id="cite_note-1">
+          3.
+          <span class="mw-cite-backlink">
+            <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+          </span>
+          <span class="reference-text">
+            <cite class="citation web">
+              <a class="external text" rel="nofollow" href="#">
+                << William F. Clocksin, Christopher S. Mellish: Programming in Prolog: Using the ISO Standard .
+                  Springer, 5ª ed., 2003, ISBN 978-3-540-00678-7 . (Esta edição é atualizada para o ISO Prolog. Edições
+                  anteriores descreviam o Edinburgh Prolog.)>>
+              </a>
+            </cite>
+          </span>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <!-- Fim Pesquisa -->
+
+  <!-- Inicio Rodapé -->
+  <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <div class="container py-5 border-start-0 border-end-0"
+      style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+      <div class="row g-5">
+        <div class="col-md-6 col-lg-6 col-xl-4">
+          <div class="footer-item">
+            <a href="index.html" class="p-0">
+              <h1 class="display- mb-6">Prolog</h1>
+              <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+            <p class="mb-4">Prolog é uma linguagem poderosa para a resolução de problemas complexos, permitindo que você
+              crie soluções
+              inteligentes com lógica e precisão....</p>
+            <a class="playstore-button" href="https://play.google.com/store/apps/details?id=sfinks.mdev.prolog">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 512 512">
+                <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 
+                  8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 
+                  212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-
+                  25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-
+                  149.372-74.849-74.847z"></path>
+              </svg>
+              <span class="texts">
+                <span class="text-1">Baixe App</span>
+                <span class="text-2">Google Play</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-2">
+          <div class="footer-item">
+            <h4 class="text-white mb-4">Links rápidos</h4>
+            <a href="https://pt.wikipedia.org/wiki/Prolog"><i class="fas fa-angle-right me-2"></i> Sobre Prolog</a>
+            <a href="https://www2.unemat.br/rhycardo/download/apostila_de_prolog.pdf"></i> Recurso</a>
+            <a href="https://www.francogarcia.com/pt-br/blog/ambientes-de-desenvolvimento-prolog/"><i
+                class="fas fa-angle-right me-2"></i> Blog</a>
+            <a href="https://www.swi-prolog.org/pldoc/index.html"><i class="fas fa-angle-right me-2"></i> Documentação
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="footer-item">
+            <h4 class="text-white mb-4">Suporte</h4>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> política de Privacidade</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Termos e
+              Condições</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Isenção de responsabilidade</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Apoiar</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Perguntas frequentes</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Ajuda</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="footer-item">
+            <h4 class="text-white mb-4">projeto no github</h4>
+            <a href="https://github.com/Danilo019/Paradigma-L-gico-e-Programa-o-em-Prolog" target="_blank">
+              <button class="btn-github">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M7.99992 1.33331C7.12444 1.33331 6.25753 1.50575 5.4487 1.84078C4.63986 2.17581 3.90493 2.66688 3.28587 3.28593C2.03563 4.53618 1.33325 6.23187 1.33325 7.99998C1.33325 10.9466 3.24659 13.4466 5.89325 14.3333C6.22659 14.3866 6.33325 14.18 6.33325 14C6.33325 13.8466 6.33325 13.4266 6.33325 12.8733C4.48659 13.2733 4.09325 11.98 4.09325 11.98C3.78659 11.2066 3.35325 11 3.35325 11C2.74659 10.5866 3.39992 10.6 3.39992 10.6C4.06659 10.6466 4.41992 11.2866 4.41992 11.2866C4.99992 12.3 5.97992 12 6.35992 11.84C6.41992 11.4066 6.59325 11.1133 6.77992 10.9466C5.29992 10.78 3.74659 10.2066 3.74659 7.66665C3.74659 6.92665 3.99992 6.33331 4.43325 5.85998C4.36659 5.69331 4.13325 4.99998 4.49992 4.09998C4.49992 4.09998 5.05992 3.91998 6.33325 4.77998C6.85992 4.63331 7.43325 4.55998 7.99992 4.55998C8.56659 4.55998 9.13992 4.63331 9.66659 4.77998C10.9399 3.91998 11.4999 4.09998 11.4999 4.09998C11.8666 4.99998 11.6333 5.69331 11.5666 5.85998C11.9999 6.33331 12.2533 6.92665 12.2533 7.66665C12.2533 10.2133 10.6933 10.7733 9.20659 10.94C9.44659 11.1466 9.66659 11.5533 9.66659 12.1733C9.66659 13.0666 9.66659 13.7866 9.66659 14C9.66659 14.18 9.77325 14.3933 10.1133 14.3333C12.7599 13.44 14.6666 10.9466 14.6666 7.99998C14.6666 7.1245 14.4941 6.25759 14.1591 5.44876C13.8241 4.63992 13.333 3.90499 12.714 3.28593C12.0949 2.66688 11.36 2.17581 10.5511 1.84078C9.7423 1.50575 8.8754 1.33331 7.99992 1.33331V1.33331Z"
+                    fill="currentcolor"></path>
+                </svg>
+                <span>Github</span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fim Rodapé -->
+
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright py-4">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-md-0">
+          <div style="background:#111111; text-align: center; padding:5%;">
+            <p class="cp-text">
+              © Copyright 2024 Grupo Verde. Todos os direitos reservados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright End -->
+
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
