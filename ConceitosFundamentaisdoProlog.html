@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="Pt-Br">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="img/swipl-48x48.ico">
+    <title>Conceitos Fundamentais do Prolog</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ["class"],
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 240 10% 3.9%;
+          --card: 0 0% 100%;
+          --card-foreground: 240 10% 3.9%;
+          --popover: 0 0% 100%;
+          --popover-foreground: 240 10% 3.9%;
+          --primary: 240 5.9% 10%;
+          --primary-foreground: 0 0% 98%;
+          --secondary: 240 4.8% 95.9%;
+          --secondary-foreground: 240 5.9% 10%;
+          --muted: 240 4.8% 95.9%;
+          --muted-foreground: 240 3.8% 46.1%;
+          --accent: 240 4.8% 95.9%;
+          --accent-foreground: 240 5.9% 10%;
+          --destructive: 0 84.2% 60.2%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 5.9% 90%;
+          --input: 240 5.9% 90%;
+          --ring: 240 5.9% 10%;
+          --radius: 0.5rem;
+        }
+        .dark {
+          --background: 240 10% 3.9%;
+          --foreground: 0 0% 98%;
+          --card: 240 10% 3.9%;
+          --card-foreground: 0 0% 98%;
+          --popover: 240 10% 3.9%;
+          --popover-foreground: 0 0% 98%;
+          --primary: 0 0% 98%;
+          --primary-foreground: 240 5.9% 10%;
+          --secondary: 240 3.7% 15.9%;
+          --secondary-foreground: 0 0% 98%;
+          --muted: 240 3.7% 15.9%;
+          --muted-foreground: 240 5% 64.9%;
+          --accent: 240 3.7% 15.9%;
+          --accent-foreground: 0 0% 98%;
+          --destructive: 0 62.8% 30.6%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 3.7% 15.9%;
+          --input: 240 3.7% 15.9%;
+          --ring: 240 4.9% 83.9%;
+        }
+      }
+    </style>
+</head>
+
+<body>
+    <!-- Início giratório-->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Fim giratório -->
+
+    <!-- Barra de navegação e início do site -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0"> </a>
+            <h1 class="text-primary1">Prolog</h1>
+            <img src="img/swipl-48x48.ico" class="imgprolog" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Principal</a>
+                    <a href="Sobre.html" class="nav-item nav-link">Sobre</a>
+                    <a href="referencias.html" class="nav-item nav-link">Referências</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                            <span class="dropdown-toggle"></span>
+                        </a>
+
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Aprender</a>
+                </div>
+                <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Quiz</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Início do cabeçalho -->
+    <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px">
+            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">
+                Prolog na Aplicação Prática
+            </h4>
+            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                <li class="breadcrumb-item"><a href="index.html">Principal</a></li>
+                <li class="breadcrumb-item"><a href="CaracterísticaseVantagensdoProlog.html"> Características e
+                        Vantagens do Prolog</a></li>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- Fim do cabeçalho-->
+
+    <!-- Barra de navegação e fim do site -->
+    <!-- Inicio pesquisa -->
+
+    <div
+        class="max-w-2xl mx-auto p-4 bg-white dark:bg-card text-zinc-800 dark:text-card-foreground rounded-lg shadow-md">
+        <img src="img/about-1.jpg" alt="hands typing on a laptop" class="w-full h-48 object-cover rounded-t-lg">
+        <h2 class="text-2xl font-bold mt-4 text-green-600"> Origem </h2>
+        <p class="mt-2 text-zinc-700 dark:text-muted-foreground">
+            A linguagem de programação Prolog nasceu no início dos anos 1970 em um contexto acadêmico,
+            inicialmente motivada por um projeto voltado ao processamento de linguagens naturais.
+            Na Universidade de Marselha, Alain Colmerauer liderava uma equipe interessada em resolver
+            problemas relacionados à dedução e linguística computacional. Ele e seu grupo, que incluía
+            Robert Pasero e Philippe Roussel, começaram a trabalhar em um sistema que pudesse lidar com a
+            resolução de sentenças lógicas.
+        </p>
+        <p>
+            A linguagem de programação Prolog nasceu no início dos anos 1970 em um contexto acadêmico,
+            inicialmente motivada por um projeto voltado ao processamento de linguagens naturais.
+            Na Universidade de Marselha, Alain Colmerauer liderava uma equipe interessada em resolver problemas
+            relacionados à dedução e linguística computacional. Ele e seu grupo, que incluía Robert Pasero e
+            Philippe Roussel, começaram a trabalhar em um sistema que pudesse lidar com a resolução de sentenças
+            lógicas.
+        </p>
+        <p>
+            O nome Prolog, escolhido por Philippe Roussel, vem de "Programmation en Logique", refletindo a
+            essência lógica da linguagem. Essa linguagem rapidamente se destacou por permitir a descrição declarativa
+            de problemas e a dedução automática de soluções, algo extremamente inovador na época,
+            principalmente no campo da inteligência artificial.
+            <br>
+        <h2 class="text-2xl font-bold mt-4 text-green-600">Regras e fatos</h2>
+        <p>
+            Os programas Prolog descrevem relações, definidas por meio de cláusulas. O Prolog puro é restrito às
+            <a class="link" https://en.wikipedia.org/wiki/Horn_clause">cláusulas Horn</a>
+            Dois tipos de cláusulas Horn são usados para definir programas Prolog: regras e fatos. Uma regra é da forma
+        </p>
+        <div class="code-explanation">
+            <pre>
+              <code> Cabeça  :-  Corpo .</code>
+          </pre>
+            <p class="explanation">
+                e é lido como <i class="marcação">"Cabeça é verdadeira se Corpo é verdadeiro".</i> O corpo de uma regra
+                consiste em chamadas
+                para predicados, que são chamados de <strong>objetivos da regra.O</strong> operador lógico <em>embutido
+                    (significando um </em> operador,/2 de aridade 2 com nome ) denota conjunção de objetivos e denota
+                disjunção . Conjunções e disjunções só podem aparecer no corpo, não no cabeçalho de uma regra. ,;/2
+            </p>
+        </div>
+        <h2 class="text-2xl font-bold mt-4 text-green-600">Completude de Turing</h2>
+        <p>
+            Pure Prolog é baseado em um subconjunto de <a class="link"
+                href="https://en.wikipedia.org/wiki/Predicate_logic" title="Lógica predicados">Lógica de predicados</a>
+            ordem,<a href="https://en.wikipedia.org/wiki/Horn_clause" title="cláusula de Horn">cláusula de Horn</a>,
+            que é <a class="link" href="https://en.wikipedia.org/wiki/Turing_completeness" title="Turing Complet">Turing
+                Completa.</a>
+            A completude de Turing de Prolog pode ser demonstrada usando-o para simular uma máquina de Turing:
+        </p>
+        <div class="code-explanation">
+            <pre>
+              <code class="turing"> turing ( Tape0 ,  Tape )  :- 
+                executar ( q0 ,  [],  Ls ,  Tape0 ,  Rs ), 
+                reverter ( Ls ,  Ls1 ), 
+                anexar ( Ls1 ,  Rs ,  Tape ).
+            
+                executar ( qf ,  Ls ,  Ls ,  Rs ,  Rs )  :-  !. 
+                executar ( Q0 ,  Ls0 ,  Ls ,  Rs0 ,  Rs )  :- 
+                símbolo ( Rs0 ,  Sym ,  RsRest ), 
+                uma vez ( regra ( Q0 ,  Sym ,  Q1 ,  NewSym ,  Action )), 
+                ação ( Ação ,  Ls0 ,  Ls1 ,  [ NewSym | RsRest ],  Rs1 ), 
+                executar ( Q1 ,  Ls1 ,  Ls ,  Rs1 ,  Rs ).
+            
+                símbolo ([],  b ,  []). 
+                símbolo ([ Sym | Rs ],  Sym ,  Rs ).
+            
+                ação ( esquerda ,  Ls0 ,  Ls ,  Rs0 ,  Rs )  :  esquerda ( Ls0 ,  Ls ,  Rs0 ,  Rs ). 
+                ação ( ficar ,  Ls ,  Ls ,  Rs ,  Rs ). 
+                ação ( direita ,  Ls0 ,  [ Sym | Ls0 ],  [ Sym | Rs ],  Rs ).
+            
+                esquerda ([],  [],  Rs0 ,  [ b | Rs0 ]). 
+                esquerda ([ L | Ls ],  Ls ,  Rs ,  [ L | Rs ]).
+            </code>
+          </pre>
+            <p class="explanation">
+                Esse código implementa uma Máquina de Turing em Prolog. Uma Máquina de Turing é um modelo computacional
+                que
+                consiste em uma fita infinita (onde os dados são armazenados) e um cabeçote de leitura/escrita que pode
+                mover-se para a esquerda ou direita ao longo da fita, além de modificar os símbolos.
+            </p>
+        </div>
+        <p>
+            Para eficiência, o código Prolog é normalmente compilado para código de máquina abstrata, frequentemente
+            influenciado pelo conjunto de instruções
+            <a class="link" https://en.wikipedia.org/wiki/Warren_Abstract_Machine" title="Machine (WAM)">Warren Abstract
+                Machine (WAM) baseado em registro.</a>
+            Algumas implementações empregam <a class="link" href="https://en.wikipedia.org/wiki/Abstract_interpretation"
+                title="interpretação abstrata">interpretação abstrata</a>
+            para derivar informações de tipo e modo de predicados em tempo de compilação, ou compilam para código de
+            máquina real para alto desempenho.
+            Conceber métodos de implementação eficientes para código Prolog é um campo de pesquisa ativa na comunidade
+            de programação lógica, e vários outros métodos de execução são empregados em algumas implementações.
+            Isso inclui <a class="link"
+                href="https://en.wikipedia.org/w/index.php?title=Clause_binarization&action=edit&redlink=1"
+                title="binarização">binarização de cláusulas</a> e <a class="link"
+                href="https://en.wikipedia.org/wiki/Stack_machines" title="maquina baseada em pilhas">máquinas virtuais
+                baseadas em pilhas</a>
+        </p>
+        <h2 class="text-2xl font-bold mt-4 text-green-600">Quebra-cabeça das Torres de Hanói</h2>
+        <p>
+            O objetivo deste famoso quebra-cabeça é mover N discos do pino esquerdo para o pino direito usando o pino
+            central como um pino de retenção auxiliar. Em nenhum momento um disco maior pode ser colocado sobre um disco
+            menor. O diagrama a seguir descreve a configuração inicial para N=3 discos.
+        </p>
+        <figure class="timeline">
+            <a href="https://skolemmachines.org/ThePrologTutorial/www/prolog_tutorial/f2_3.gif">
+                <img src="https://skolemmachines.org/ThePrologTutorial/www/prolog_tutorial/f2_3.gif" decoding="async"
+                    width="600" height="200" class="timeline-image"
+                    srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Early_Prolog_timeline.svg/660px-Early_Prolog_timeline.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/49/Early_Prolog_timeline.svg/880px-Early_Prolog_timeline.svg.png 2x"
+                    data-file-width="600" data-file-height="240"
+                    alt="Torre de Hanoi">
+            </a>
+            <figcaption class="timeline-caption">
+                Torre de Hanoi
+            </figcaption>
+        </figure>
+        <p>Aqui está um programa Prolog recursivo que resolve o quebra-cabeça. Ele consiste em duas cláusulas.</p>
+        <div class="code-explanation">
+            <pre>
+            <code class="turing"> mover(1,X,Y,_) :-  
+                write('Mover disco superior de '),
+                escreva(X),
+                escreva('para'),
+                escreva(Y),
+                nl.
+            mover(N,X,Y,Z) :-
+                N>1,
+                M é N-1,
+                mover(M,X,Z,Y),
+                mover(1,X,Y,_),
+                mover(M,Z,Y,X).
+            </code>
+            </pre>
+            <p class="explanation">
+                Esse código é uma implementação do algoritmo de resolução da Torre de Hanói em Prolog, que instrui como
+                mover discos entre pinos para resolver o quebra-cabeça.
+            </p>
+        </div>
+        <br>
+        <h1 id="referências" style="cursor: auto;"
+            title="Esta seção foi configurada para não ser editável diretamente. Edite a página toda ou a seção anterior em disso.">
+            <!-- <span id="Refer.C3.AAncias"></span> -->
+            Fontes Consulta
+        </h1>
+        <hr style="width: 100%; height: 3px; background-color: rgb(128, 128, 128);">
+        <div class="mw-references-wrap">
+            <ol class="references">
+                <li id="cite_note-1">
+                    1.
+                    <span class="mw-cite-backlink">
+                        <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+                    </span>
+                    <span class="reference-text">
+                        <cite class="citation web">
+                            <a class="external text" rel="nofollow" href="https://pt.wikipedia.org/wiki/Prolog">
+                                << Prolog - wikipedia>>
+                            </a>
+                        </cite>
+                    </span>
+                </li>
+            </ol>
+        </div>
+        <div class="mw-references-wrap">
+            <ol class="references">
+                <li id="cite_note-1">
+                    2.
+                    <span class="mw-cite-backlink">
+                        <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+                    </span>
+                    <span class="reference-text">
+                        <cite class="citation web">
+                            <a class="external text" rel="nofollow"
+                                href="https://www2.unemat.br/rhycardo/download/apostila_de_prolog.pdf">
+                                << apostila-prolog>>
+                            </a>
+                        </cite>
+                    </span>
+                </li>
+            </ol>
+        </div>
+        <div class="mw-references-wrap">
+            <ol class="references">
+                <li id="cite_note-1">
+                    3.
+                    <span class="mw-cite-backlink">
+                        <a href="#cite ref-1" aria-label="Ir para cima" title="Ir para cima">↑</a>
+                    </span>
+                    <span class="reference-text">
+                        <cite class="citation web">
+                            <a class="external text" rel="nofollow"
+                                href="https://skolemmachines.org/ThePrologTutorial/www/prolog_tutorial/2_3.html">
+                                << Quebra Cabeça Torre Hanoi >>
+                            </a>
+                        </cite>
+                    </span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- Fim Pesquisa -->
+
+    <!-- Inicio Rodapé -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5 border-start-0 border-end-0"
+            style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="footer-item">
+                        <a href="index.html" class="p-0">
+                            <h1 class="display- mb-6">Prolog</h1>
+                            <!-- <img src="img/logo.png" alt="Logo"> -->
+                        </a>
+                        <p class="mb-4">Prolog é uma linguagem poderosa para a resolução de problemas complexos,
+                            permitindo que você
+                            crie soluções
+                            inteligentes com lógica e precisão....</p>
+                        <a class="playstore-button"
+                            href="https://play.google.com/store/apps/details?id=sfinks.mdev.prolog">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon"
+                                viewBox="0 0 512 512">
+                                <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 
+                  8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 
+                  212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-
+                  25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-
+                  149.372-74.849-74.847z"></path>
+                            </svg>
+                            <span class="texts">
+                                <span class="text-1">Baixe App</span>
+                                <span class="text-2">Google Play</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-2">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Links rápidos</h4>
+                        <a href="https://pt.wikipedia.org/wiki/Prolog"><i class="fas fa-angle-right me-2"></i> Sobre
+                            Prolog</a>
+                        <a href="https://www2.unemat.br/rhycardo/download/apostila_de_prolog.pdf"></i> Recurso</a>
+                        <a href="https://www.francogarcia.com/pt-br/blog/ambientes-de-desenvolvimento-prolog/"><i
+                                class="fas fa-angle-right me-2"></i> Blog</a>
+                        <a href="https://www.swi-prolog.org/pldoc/index.html"><i class="fas fa-angle-right me-2"></i>
+                            Documentação
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Suporte</h4>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> política de Privacidade</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Termos e
+                            Condições</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Isenção de responsabilidade</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Apoiar</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Perguntas frequentes</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Ajuda</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">projeto no github</h4>
+                        <a href="https://github.com/Danilo019/Paradigma-L-gico-e-Programa-o-em-Prolog" target="_blank">
+                            <button class="btn-github">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.99992 1.33331C7.12444 1.33331 6.25753 1.50575 5.4487 1.84078C4.63986 2.17581 3.90493 2.66688 3.28587 3.28593C2.03563 4.53618 1.33325 6.23187 1.33325 7.99998C1.33325 10.9466 3.24659 13.4466 5.89325 14.3333C6.22659 14.3866 6.33325 14.18 6.33325 14C6.33325 13.8466 6.33325 13.4266 6.33325 12.8733C4.48659 13.2733 4.09325 11.98 4.09325 11.98C3.78659 11.2066 3.35325 11 3.35325 11C2.74659 10.5866 3.39992 10.6 3.39992 10.6C4.06659 10.6466 4.41992 11.2866 4.41992 11.2866C4.99992 12.3 5.97992 12 6.35992 11.84C6.41992 11.4066 6.59325 11.1133 6.77992 10.9466C5.29992 10.78 3.74659 10.2066 3.74659 7.66665C3.74659 6.92665 3.99992 6.33331 4.43325 5.85998C4.36659 5.69331 4.13325 4.99998 4.49992 4.09998C4.49992 4.09998 5.05992 3.91998 6.33325 4.77998C6.85992 4.63331 7.43325 4.55998 7.99992 4.55998C8.56659 4.55998 9.13992 4.63331 9.66659 4.77998C10.9399 3.91998 11.4999 4.09998 11.4999 4.09998C11.8666 4.99998 11.6333 5.69331 11.5666 5.85998C11.9999 6.33331 12.2533 6.92665 12.2533 7.66665C12.2533 10.2133 10.6933 10.7733 9.20659 10.94C9.44659 11.1466 9.66659 11.5533 9.66659 12.1733C9.66659 13.0666 9.66659 13.7866 9.66659 14C9.66659 14.18 9.77325 14.3933 10.1133 14.3333C12.7599 13.44 14.6666 10.9466 14.6666 7.99998C14.6666 7.1245 14.4941 6.25759 14.1591 5.44876C13.8241 4.63992 13.333 3.90499 12.714 3.28593C12.0949 2.66688 11.36 2.17581 10.5511 1.84078C9.7423 1.50575 8.8754 1.33331 7.99992 1.33331V1.33331Z"
+                                        fill="currentcolor"></path>
+                                </svg>
+                                <span>Github</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Fim Rodapé -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <div style="background:#111111; text-align: center; padding:5%;">
+                        <p class="cp-text">
+                            © Copyright 2024 Grupo Verde. Todos os direitos reservados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
