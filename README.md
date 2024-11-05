@@ -20,6 +20,16 @@
 ## 🚀 Sobre o Projeto
 O projeto explora a programação lógica e a utilização do Prolog, uma linguagem voltada para inteligência artificial e resolução de problemas lógicos. A interface web é desenvolvida com **Bootstrap**, garantindo uma apresentação moderna e interativa, com exemplos e explicações detalhadas dos principais conceitos.
 
+## 📂 Projetos em Prolog
+<p>Este repositório contém os seguintes projetos implementados em <b>Prolog</b></p>
+<li>checkers.pl</li>
+<li>chess.pl</li>
+<li>hanoi.pl</li>
+<li>Create hanoi.pl</li>
+<li>sudoku.pl</li>
+<li>tictactoe.pl</li>
+Acesse o repositório completo no <a href="https://github.com/imponateado/prologstuff" title="Github">GitHub
+
 ### PRÉ-REQUISITO
 ---
 1. **Navegador da Web**: Tenha um navegador instalado, como Google Chrome, Mozilla Firefox ou Safari.
