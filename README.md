@@ -84,6 +84,11 @@ Agradecemos aos desenvolvedores por sua dedicação e trabalho árduo na criaç�
 3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`.
 4. Envie as suas alterações: `git push origin my-feature`.
 
+## 💪 QR Code do GitHub do Projeto
+<img src="https://github.com/user-attachments/assets/904e8a56-8ea3-470e-9180-302ae155d4a9" alt="image" width="200" height="200">
+
+
+
 ---
 
 ## 🧙‍♂️ Autor
