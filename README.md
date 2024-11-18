@@ -44,8 +44,9 @@ Acesse o repositório completo no <a href="https://github.com/imponateado/prolog
 
 1. Clone este repositório:
 git clone https://github.com/seu-usuario/seu-repositorio.git
-2. Abra o arquivo `index.html` no navegador para visualizar o site.
-3. Para rodar os exemplos de Prolog, use o SWI-Prolog:
+2. Baixe Swin Prolog.
+3. Abra o arquivo `index.html` no navegador para visualizar o site.
+4. Para rodar os exemplos de Prolog, use o SWI-Prolog:
 
 ## Interagindo com o Projeto
 
