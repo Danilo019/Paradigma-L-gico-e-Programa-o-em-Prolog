@@ -75,6 +75,7 @@ Agradecemos aos desenvolvedores por sua dedicação e trabalho árduo na criaç�
     <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/38961152?v=4" width="100px;" alt=""/><br /><sub><b>Leonardo Silva Teodoro</b></sub></a><br /><a href="https://github.com/imponateado" title="Rocketseat">Rgm:29654009</a></td>
     <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/105018263?v=4" width="100px;" alt=""/><br /><sub><b>José Maria da Silva Junior</b></sub></a><br /><a href="https://github.com/Kroatta" title="Rocketseat">Rgm:29459141</a></td>
     <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/105018263?v=4" width="100px;" alt=""/><br /><sub><b>João Lucas da Silva Dutra</b></sub></a><br /><a href="https://github.com/Kroatta" title="Rocketseat">Rgm:29842727</a></td> 	  
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/169183947?v=4" width="100px;" alt=""/><br /><sub><b>Abel Isack</b></sub></a><br /><a href="https://github.com/AIsack2" title="Rocketseat">Rgm:30526914</a></td> 	  
 </table>
 
 ## 💪 Como Contribuir para o Projeto
